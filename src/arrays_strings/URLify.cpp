@@ -14,6 +14,8 @@
 
 using namespace std;
 
+// ------------------------------------------------------------------------------------------------
+
 void replaceSpaces(string &str, int trueLength) {
   size_t index = str.length() - 1;
   for (int i = trueLength - 1; i >= 0; --i) {
@@ -28,6 +30,8 @@ void replaceSpaces(string &str, int trueLength) {
     }
   }
 }
+
+// ------------------------------------------------------------------------------------------------
 
 #include "gtest/gtest.h"
 
