@@ -4,7 +4,6 @@
 // Hints: #1, #84, #722, #737
 
 #include <algorithm>
-#include <iostream>
 #include <string>
 
 using namespace std;

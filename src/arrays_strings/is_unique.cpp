@@ -3,7 +3,6 @@
 //
 // Hints: #44, #117, #132
 
-#include <iostream>
 #include <string>
 
 using namespace std;
