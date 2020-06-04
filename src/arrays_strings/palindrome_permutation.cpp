@@ -116,7 +116,7 @@ bool isPermutationOfPalindrome_3(const string &phrase) {
 
 #include "gtest/gtest.h"
 
-TEST(URLifyTest, Trivial) {
+TEST(PalindromePermutationTest, Trivial) {
   EXPECT_TRUE(isPermutationOfPalindrome_1("tact coa"));
   EXPECT_TRUE(isPermutationOfPalindrome_2("tact coa"));
   EXPECT_TRUE(isPermutationOfPalindrome_3("tact coa"));
