@@ -8,6 +8,8 @@ include(PackageAddTest)
 
 add_subdirectory("${PROJECT_SOURCE_DIR}/extern/googletest")
 
+include_directories("include")
+
 file(GLOB files "src/**/*.cpp")
 foreach(file ${files})
   get_filename_component(exec_name ${file} NAME_WE)
