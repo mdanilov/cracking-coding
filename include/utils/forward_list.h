@@ -23,6 +23,10 @@ public:
     }
   }
 
+  static NodePtr createNode(T value = T()) {
+    return std::make_shared<Node<T>>(value);
+  }
+
   bool operator==(const ForwardList<T> &rhs) const {
     NodePtr n1 = head;
     NodePtr n2 = rhs.head;
