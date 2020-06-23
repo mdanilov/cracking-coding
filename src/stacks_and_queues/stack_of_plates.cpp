@@ -15,6 +15,8 @@
 #include <stdexcept>
 #include <vector>
 
+// Solution
+// ------------------------------------------------------------------------------------------------
 struct Node {
   int value;
   std::shared_ptr<Node> below;

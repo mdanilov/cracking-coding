@@ -6,7 +6,7 @@
 #include <limits>
 #include <stack>
 
-// Solution 1
+// Solution
 // ------------------------------------------------------------------------------------------------
 struct NodeWithMin {
   int value;
