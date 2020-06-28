@@ -6,6 +6,7 @@ namespace utils {
 
 struct TreeNode {
   int value;
+  std::shared_ptr<TreeNode> parent;
   std::shared_ptr<TreeNode> left;
   std::shared_ptr<TreeNode> right;
 
