@@ -38,17 +38,15 @@ std::shared_ptr<TreeNode> createMinimalBST(const std::vector<int> &array) {
 
 TEST(MinimalTreeTest, Trivial) {
   std::shared_ptr<TreeNode> n = createMinimalBST({0, 1, 2, 3, 4, 5, 6});
-  int maxHeight = -1;
-  std::function<void(std::shared_ptr<TreeNode>, int)> traversal;
-  traversal = [&maxHeight, &traversal](std::shared_ptr<TreeNode> node,
-                                       int height) {
-    if (node != nullptr) {
-      height++;
-      maxHeight = std::max(maxHeight, height);
-      traversal(node->left, height);
-      traversal(node->right, height);
-    }
+  std::function<int(std::shared_ptr<TreeNode>)> get_max_height;
+  get_max_height = [&get_max_height](std::shared_ptr<TreeNode> node) {
+    if (node == nullptr)
+      return -1;
+
+    int left_height = get_max_height(node->left);
+    int right_height = get_max_height(node->right);
+    return std::max(left_height, right_height) + 1;
   };
-  traversal(n, -1);
-  EXPECT_EQ(2, maxHeight);
+
+  EXPECT_EQ(2, get_max_height(n));
 }

@@ -11,6 +11,9 @@
 #include <memory>
 #include <string>
 
+// Solution
+// ------------------------------------------------------------------------------------------------
+
 enum class AnimalType { kUnknown, kDog, kCat };
 
 class Animal {
