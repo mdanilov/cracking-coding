@@ -6,20 +6,16 @@
 #include <memory>
 #include <vector>
 
+#include "utils/tree.h"
+
+using namespace utils;
+
 // Solution #1
 // Complexity: time O(N), space O(N)
 // ------------------------------------------------------------------------------------------------
-struct TreeNode {
-  int value;
-  std::shared_ptr<TreeNode> left;
-  std::shared_ptr<TreeNode> right;
-
-  TreeNode(int v) : value(v) {}
-};
-
 void createLevelLinkedList(
-    std::shared_ptr<TreeNode> root,
-    std::vector<std::list<std::shared_ptr<TreeNode>>> &lists, int level) {
+    TreeNodePtr root,
+    std::vector<std::list<TreeNodePtr>> &lists, int level) {
   if (root == nullptr)
     return; // base case
 
@@ -27,16 +23,16 @@ void createLevelLinkedList(
     lists.emplace_back();
   }
 
-  std::list<std::shared_ptr<TreeNode>> &list = lists[level];
+  std::list<TreeNodePtr> &list = lists[level];
 
   list.push_back(root);
   createLevelLinkedList(root->left, lists, level + 1);
   createLevelLinkedList(root->right, lists, level + 1);
 }
 
-std::vector<std::list<std::shared_ptr<TreeNode>>>
-createLevelLinkedList_1(std::shared_ptr<TreeNode> root) {
-  std::vector<std::list<std::shared_ptr<TreeNode>>> lists;
+std::vector<std::list<TreeNodePtr>>
+createLevelLinkedList_1(TreeNodePtr root) {
+  std::vector<std::list<TreeNodePtr>> lists;
   createLevelLinkedList(root, lists, 0);
   return lists;
 }
@@ -44,21 +40,21 @@ createLevelLinkedList_1(std::shared_ptr<TreeNode> root) {
 // Solution #1
 // Complexity: time O(N), space O(N)
 // ------------------------------------------------------------------------------------------------
-std::vector<std::list<std::shared_ptr<TreeNode>>>
-createLevelLinkedList_2(std::shared_ptr<TreeNode> root) {
-  std::vector<std::list<std::shared_ptr<TreeNode>>> result;
+std::vector<std::list<TreeNodePtr>>
+createLevelLinkedList_2(TreeNodePtr root) {
+  std::vector<std::list<TreeNodePtr>> result;
   /* Visit the root */
-  std::list<std::shared_ptr<TreeNode>> current;
+  std::list<TreeNodePtr> current;
   if (root != nullptr) {
     current.push_back(root);
   }
 
   while (current.size() > 0) {
     result.push_back(current); // Add previous level
-    std::list<std::shared_ptr<TreeNode>> &parents =
+    std::list<TreeNodePtr> &parents =
         result.back(); // Go to next level
     current.clear();
-    for (std::shared_ptr<TreeNode> parent : parents) {
+    for (TreeNodePtr parent : parents) {
       /* Visit children */
       if (parent->left != nullptr) {
         current.push_back(parent->left);
@@ -92,7 +88,7 @@ TEST(ListOfDepthsTest, Trivial) {
   root->left->right = std::make_shared<TreeNode>(4);
   root->left->left->left = std::make_shared<TreeNode>(5);
 
-  std::vector<std::list<std::shared_ptr<TreeNode>>> expected_result = {
+  std::vector<std::list<TreeNodePtr>> expected_result = {
       {root},
       {root->left, root->right},
       {root->left->left, root->left->right},
