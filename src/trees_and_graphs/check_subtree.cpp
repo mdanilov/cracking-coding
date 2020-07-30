@@ -35,8 +35,8 @@ bool containsTree_1(TreeNodePtr t1, TreeNodePtr t2) {
 }
 
 // Solution #2
-// Complexity: time O(n + km), where k is the number  of occurrences of T2's
-// root in T1.
+// Complexity: time O(n + km), space O(lon(n) + log(m)), where k is the number
+// of occurrences of T2's root in T1.
 // ------------------------------------------------------------------------------------------------
 bool matchTree(TreeNodePtr r1, TreeNodePtr r2) {
   if (r1 == nullptr && r2 == nullptr) {
