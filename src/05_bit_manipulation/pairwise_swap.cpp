@@ -3,3 +3,18 @@
 // and bit 3 are swapped, and so on).
 //
 // Hints: #145, #248, #328, #355
+
+// Solution
+// ------------------------------------------------------------------------------------------------
+int swapOddEvenBits(int x) {
+  return ((x & 0xAAAAAAAA) >> 1) | ((x & 0x55555555) << 1);
+}
+
+// Test
+// ------------------------------------------------------------------------------------------------
+
+#include "gtest/gtest.h"
+
+TEST(PairwaiseSwapTest, Trivial) {
+  EXPECT_EQ(swapOddEvenBits(0b01111010001101), 0b10110101001110);
+}

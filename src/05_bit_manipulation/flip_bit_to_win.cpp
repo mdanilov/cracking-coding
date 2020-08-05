@@ -40,18 +40,19 @@ std::vector<int> getAlternatingSequences(int n) {
 
 /* Given the lengths of alternating sequences of 0s and 1s, find the longest one
  * we can build. */
-int findLongestSequence(const std::vector<int>& seq) {
+int findLongestSequence(const std::vector<int> &seq) {
   int maxSeq = 1;
 
   for (int i = 0; i < seq.size(); i += 2) {
     int zerosSeq = seq[i];
-    int onesSeqRight = i - 1 >=0 ? seq[i - 1] : 0;
-    int onesSeqLeft = i + 1 < seq.size() ? seq[i  + 1] : 0;
+    int onesSeqRight = i - 1 >= 0 ? seq[i - 1] : 0;
+    int onesSeqLeft = i + 1 < seq.size() ? seq[i + 1] : 0;
 
     int thisSeq = 0;
     if (zerosSeq == 1) { // can merge
       thisSeq = onesSeqLeft + 1 + onesSeqRight;
-    } if (zerosSeq > 1) { // Just add a zero to either side
+    }
+    if (zerosSeq > 1) { // Just add a zero to either side
       thisSeq = 1 + std::max(onesSeqLeft, onesSeqRight);
     } else if (zerosSeq == 0) { // No zero, but take either side
       thisSeq = std::max(onesSeqLeft, onesSeqRight);
@@ -74,7 +75,8 @@ int longestSequence(int n) {
 // ------------------------------------------------------------------------------------------------
 int flipBit(int a) {
   /* If all 1S, this is already the longest sequence. */
-  if (~a == 0) return sizeof(int) * 8;
+  if (~a == 0)
+    return sizeof(int) * 8;
 
   int currentLength = 0;
   int previousLength = 0;
