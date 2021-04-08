@@ -13,7 +13,7 @@ bool isUniqueChars_1(const string& str) {
   if (str.length() > 128)
     return false;
 
-  bool char_set[128];
+  bool char_set[128] = {0};
   for (int i = 0; i < str.length(); ++i) {
     int val = str[i];
     if (char_set[val]) {

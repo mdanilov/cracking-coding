@@ -3,6 +3,7 @@
 // such that the heights of the two subtrees of any node never differ by more
 // than one. Hints: #21, #33, #49, #105, #124
 
+#include <algorithm>
 #include <limits>
 #include <memory>
 
