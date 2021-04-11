@@ -60,7 +60,7 @@ bool isPermutationOfPalindrome_1(const string &phrase) {
 
 bool isPermutationOfPalindrome_2(const string &phrase) {
   int countOdd = 0;
-  int table['z' - 'a' + 1];
+  int table['z' - 'a' + 1] = {0};
   for (char c : phrase) {
     int x = getCharNumber(c);
     if (x != -1) {

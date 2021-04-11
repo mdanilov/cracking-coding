@@ -19,7 +19,7 @@ TreeNodePtr createMinimalBST(const std::vector<int> &arr,
   int mid = (start + end) / 2;
   TreeNodePtr n = std::make_shared<TreeNode>(arr[mid]);
   n->left = createMinimalBST(arr, start, mid - 1);
-  n->left = createMinimalBST(arr, mid + 1, end);
+  n->right = createMinimalBST(arr, mid + 1, end);
   return n;
 }
 
