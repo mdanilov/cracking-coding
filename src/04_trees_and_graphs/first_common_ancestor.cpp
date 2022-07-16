@@ -28,10 +28,10 @@ int depth(TreeNodePtr node) {
 }
 
 TreeNodePtr commonAncestor_1(TreeNodePtr p, TreeNodePtr q) {
-  int delta = depth(p) - depth(q);          // get difference in depths
-  TreeNodePtr first = delta > 0 ? q : p;    // get shallower node
-  TreeNodePtr second = delta > 0 ? p : q;   // get deeper node
-  second = goUpBy(second, std::abs(delta)); // move deeper node up
+  int delta = depth(p) - depth(q);           // get difference in depths
+  TreeNodePtr first = delta > 0 ? q : p;     // get shallower node
+  TreeNodePtr second = delta > 0 ? p : q;    // get deeper node
+  second = goUpBy(second, std::abs(delta));  // move deeper node up
 
   /* Find where paths intersect */
   while (first != second && first != nullptr && second != nullptr) {
@@ -56,10 +56,8 @@ TreeNodePtr getSibling(TreeNodePtr node) {
 }
 
 bool covers(TreeNodePtr root, TreeNodePtr p) {
-  if (root == nullptr)
-    return false;
-  if (root == p)
-    return true;
+  if (root == nullptr) return false;
+  if (root == p) return true;
   return covers(root->left, p) || covers(root->right, p);
 }
 
@@ -94,7 +92,7 @@ TreeNodePtr ancestorHelper(TreeNodePtr root, TreeNodePtr p, TreeNodePtr q) {
 
   bool p_is_on_left = covers(root->left, p);
   bool q_is_on_left = covers(root->left, q);
-  if (p_is_on_left != q_is_on_left) { // Nodes are on different side
+  if (p_is_on_left != q_is_on_left) {  // Nodes are on different side
     return root;
   }
 
@@ -138,7 +136,7 @@ Result commonAncHelper(TreeNodePtr root, TreeNodePtr p, TreeNodePtr q) {
   }
 
   if (rx.node != nullptr && ry.node != nullptr) {
-    return Result(root, true); // This is the common ancestor
+    return Result(root, true);  // This is the common ancestor
   } else if (root == p || root == q) {
     /* If we're currently at p or q, and we also found one of those nodes in a
      * subtree, then this is truly an ancestor and the flag should be true. */

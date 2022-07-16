@@ -9,8 +9,8 @@
 // Complexity: time O(N), space O(N)
 // ------------------------------------------------------------------------------------------------
 template <typename T>
-typename ForwardList<T>::NodePtr
-nthToLast(typename ForwardList<T>::NodePtr head, int k, int &i) {
+typename ForwardList<T>::NodePtr nthToLast(
+    typename ForwardList<T>::NodePtr head, int k, int &i) {
   if (head == nullptr) {
     return nullptr;
   }
@@ -38,8 +38,7 @@ typename ForwardList<T>::NodePtr kthToLast(ForwardList<T> &l, int k) {
 
   /* Move p1 k nodes into the list. */
   for (int i = 0; i < k; ++i) {
-    if (p1 == nullptr)
-      return nullptr; // Out of bounds
+    if (p1 == nullptr) return nullptr;  // Out of bounds
     p1 = p1->next;
   }
 

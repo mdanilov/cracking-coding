@@ -13,7 +13,7 @@
 // Complexity (in balanced tree): time O(log N), where N is the number of nodes
 // ------------------------------------------------------------------------------------------------
 class TreeNode : public std::enable_shared_from_this<TreeNode> {
-public:
+ public:
   TreeNode(int d) : data(d), size(1) {}
 
   int getSize() { return size; }
@@ -72,7 +72,7 @@ public:
     }
   }
 
-private:
+ private:
   int data;
   std::shared_ptr<TreeNode> left;
   std::shared_ptr<TreeNode> right;
@@ -80,15 +80,15 @@ private:
 };
 
 // Solution #2
-// Complexity (in balanced tree): time O(D), where D is the max depth of the tree
+// Complexity (in balanced tree): time O(D), where D is the max depth of the
+// tree
 // ------------------------------------------------------------------------------------------------
 class Tree {
-public:
+ public:
   int getSize() { return root == nullptr ? 0 : root->getSize(); }
 
   std::shared_ptr<TreeNode> getRandomNode() {
-    if (root == nullptr)
-      return nullptr;
+    if (root == nullptr) return nullptr;
 
     std::srand(std::time(nullptr));
     int i = std::rand() / ((RAND_MAX + 1u) / getSize());
@@ -103,7 +103,7 @@ public:
     }
   }
 
-private:
+ private:
   std::shared_ptr<TreeNode> root = nullptr;
 };
 

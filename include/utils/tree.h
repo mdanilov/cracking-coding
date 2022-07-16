@@ -15,4 +15,4 @@ struct TreeNode {
 
 using TreeNodePtr = std::shared_ptr<TreeNode>;
 
-} // namespace utils
+}  // namespace utils

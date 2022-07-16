@@ -78,17 +78,16 @@ bool oneEditAway_2(const string &first, const string &second) {
   while (index2 < s2.length() && index1 < s1.length()) {
     if (s1[index1] != s2[index2]) {
       /* Ensure that this is the first difference found.*/
-      if (foundDifference)
-        return false;
+      if (foundDifference) return false;
       foundDifference = true;
       if (s1.length() == s2.length()) {
         // On replace, move shorter pointer
         index1++;
       }
     } else {
-      index1++; // If matching, move shorter pointer
+      index1++;  // If matching, move shorter pointer
     }
-    index2++; // Always move pointer for longer string
+    index2++;  // Always move pointer for longer string
   }
   return true;
 }
@@ -99,7 +98,6 @@ bool oneEditAway_2(const string &first, const string &second) {
 #include "gtest/gtest.h"
 
 TEST(OneAwayTest, Trivial) {
-
   EXPECT_TRUE(oneEditAway_1("pale", "ple"));
   EXPECT_TRUE(oneEditAway_1("pales", "pale"));
   EXPECT_TRUE(oneEditAway_1("pale", "bale"));

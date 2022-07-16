@@ -26,7 +26,7 @@ typename ForwardList<T>::NodePtr FindBeginning(ForwardList<T> &list) {
   while (fast != nullptr && fast->next != nullptr) {
     slow = slow->next;
     fast = fast->next->next;
-    if (slow == fast) { // Collision
+    if (slow == fast) {  // Collision
       break;
     }
   }
@@ -54,7 +54,6 @@ typename ForwardList<T>::NodePtr FindBeginning(ForwardList<T> &list) {
 #include "gtest/gtest.h"
 
 TEST(LoopDetectionTest, Trivial) {
-
   ForwardList<char> list({'A', 'B', 'C', 'D', 'E'});
   ForwardList<char>::NodePtr collision = list.head->next->next;
   list.head->next->next->next->next = collision;

@@ -61,7 +61,8 @@ ForwardList<T> addLists_1(const ForwardList<T> &l1, const ForwardList<T> &l2) {
 // Solution #2
 // Complexity: time O(N), space O(N)
 // ------------------------------------------------------------------------------------------------
-template <typename T> size_t length(const ForwardList<T> &l) {
+template <typename T>
+size_t length(const ForwardList<T> &l) {
   typename ForwardList<T>::NodePtr node = l.head;
   size_t size = 0;
   while (node != nullptr) {
@@ -73,8 +74,8 @@ template <typename T> size_t length(const ForwardList<T> &l) {
 
 /* Helper function to insert node in the front of a linked list */
 template <typename T>
-typename ForwardList<T>::NodePtr
-insertBefore(typename ForwardList<T>::NodePtr l, T data) {
+typename ForwardList<T>::NodePtr insertBefore(
+    typename ForwardList<T>::NodePtr l, T data) {
   typename ForwardList<T>::NodePtr node = ForwardList<T>::createNode(data);
   if (l != nullptr) {
     node->next = l;
@@ -83,14 +84,16 @@ insertBefore(typename ForwardList<T>::NodePtr l, T data) {
 }
 
 /* Pad the list with zeros */
-template <typename T> void padList(ForwardList<T> &l, int padding) {
+template <typename T>
+void padList(ForwardList<T> &l, int padding) {
   typename ForwardList<T>::NodePtr head = l.head;
   for (size_t i = 0; i < padding; ++i) {
     head = insertBefore<T>(head, 0);
   }
   l.head = head;
 }
-template <typename T> struct PartialSum {
+template <typename T>
+struct PartialSum {
   typename ForwardList<T>::NodePtr sum = nullptr;
   T carry = 0;
 };

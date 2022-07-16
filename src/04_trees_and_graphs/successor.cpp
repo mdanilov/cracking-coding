@@ -61,5 +61,5 @@ TEST(SuccessorTest, Trivial) {
 
   EXPECT_EQ(root->left->right->value, inorderSucc(root->left)->value);
   EXPECT_EQ(root->value, inorderSucc(root->left->right)->value);
-  EXPECT_EQ(nullptr, inorderSucc(root->right)); // no successor for node 4
+  EXPECT_EQ(nullptr, inorderSucc(root->right));  // no successor for node 4
 }

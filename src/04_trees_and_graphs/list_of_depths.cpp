@@ -13,13 +13,12 @@ using namespace utils;
 // Solution #1
 // Complexity: time O(N), space O(N)
 // ------------------------------------------------------------------------------------------------
-void createLevelLinkedList(
-    TreeNodePtr root,
-    std::vector<std::list<TreeNodePtr>> &lists, int level) {
-  if (root == nullptr)
-    return; // base case
+void createLevelLinkedList(TreeNodePtr root,
+                           std::vector<std::list<TreeNodePtr>> &lists,
+                           int level) {
+  if (root == nullptr) return;  // base case
 
-  if (lists.size() == level) { // level not contained in the list
+  if (lists.size() == level) {  // level not contained in the list
     lists.emplace_back();
   }
 
@@ -30,8 +29,7 @@ void createLevelLinkedList(
   createLevelLinkedList(root->right, lists, level + 1);
 }
 
-std::vector<std::list<TreeNodePtr>>
-createLevelLinkedList_1(TreeNodePtr root) {
+std::vector<std::list<TreeNodePtr>> createLevelLinkedList_1(TreeNodePtr root) {
   std::vector<std::list<TreeNodePtr>> lists;
   createLevelLinkedList(root, lists, 0);
   return lists;
@@ -40,8 +38,7 @@ createLevelLinkedList_1(TreeNodePtr root) {
 // Solution #1
 // Complexity: time O(N), space O(N)
 // ------------------------------------------------------------------------------------------------
-std::vector<std::list<TreeNodePtr>>
-createLevelLinkedList_2(TreeNodePtr root) {
+std::vector<std::list<TreeNodePtr>> createLevelLinkedList_2(TreeNodePtr root) {
   std::vector<std::list<TreeNodePtr>> result;
   /* Visit the root */
   std::list<TreeNodePtr> current;
@@ -50,9 +47,8 @@ createLevelLinkedList_2(TreeNodePtr root) {
   }
 
   while (current.size() > 0) {
-    result.push_back(current); // Add previous level
-    std::list<TreeNodePtr> &parents =
-        result.back(); // Go to next level
+    result.push_back(current);                        // Add previous level
+    std::list<TreeNodePtr> &parents = result.back();  // Go to next level
     current.clear();
     for (TreeNodePtr parent : parents) {
       /* Visit children */

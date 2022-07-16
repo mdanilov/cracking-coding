@@ -5,14 +5,15 @@
 
 // Hints: #9, #40
 
-#include "utils/forward_list.h"
-
 #include <unordered_set>
+
+#include "utils/forward_list.h"
 
 // Solution #1
 // Complexity: time O(N), space O(N)
 // ------------------------------------------------------------------------------------------------
-template <typename T> void deleteDups_1(ForwardList<T> &l) {
+template <typename T>
+void deleteDups_1(ForwardList<T> &l) {
   std::unordered_set<T> set;
   typename ForwardList<T>::NodePtr n = l.head;
   typename ForwardList<T>::NodePtr previous = nullptr;
@@ -30,7 +31,8 @@ template <typename T> void deleteDups_1(ForwardList<T> &l) {
 // Solution #2
 // Complexity: time O(N^2), space O(1)
 // ------------------------------------------------------------------------------------------------
-template <typename T> void deleteDups_2(ForwardList<T> &l) {
+template <typename T>
+void deleteDups_2(ForwardList<T> &l) {
   typename ForwardList<T>::NodePtr current = l.head;
   while (current != nullptr) {
     /* Remove all future nodes that have the same value */
@@ -38,8 +40,7 @@ template <typename T> void deleteDups_2(ForwardList<T> &l) {
     while (runner->next != nullptr) {
       if (runner->next->data == current->data) {
         runner->next = runner->next->next;
-      }
-      else {
+      } else {
         runner = runner->next;
       }
     }

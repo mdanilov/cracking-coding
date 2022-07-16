@@ -15,19 +15,17 @@ using namespace utils;
 // Complexity: time O(N log N)
 // ------------------------------------------------------------------------------------------------
 int getHeight(TreeNodePtr root) {
-  if (root == nullptr)
-    return -1; // Base case
+  if (root == nullptr) return -1;  // Base case
   return std::max(getHeight(root->left), getHeight(root->right)) + 1;
 }
 
 bool isBalanced_1(TreeNodePtr root) {
-  if (root == nullptr)
-    return true; // Base case
+  if (root == nullptr) return true;  // Base case
 
   int height_diff = getHeight(root->left) - getHeight(root->right);
   if (std::abs(height_diff) > 1) {
     return false;
-  } else { // Recurse
+  } else {  // Recurse
     return isBalanced_1(root->left) && isBalanced_1(root->right);
   }
 }
@@ -36,20 +34,19 @@ bool isBalanced_1(TreeNodePtr root) {
 // Complexity: time O(N), space O(N)
 // ------------------------------------------------------------------------------------------------
 int checkHeight(TreeNodePtr root) {
-  if (root == nullptr)
-    return -1;
+  if (root == nullptr) return -1;
 
   int left_height = checkHeight(root->left);
   if (left_height == std::numeric_limits<int>::min())
-    return std::numeric_limits<int>::min(); // Pass error up
+    return std::numeric_limits<int>::min();  // Pass error up
 
   int right_height = checkHeight(root->right);
   if (right_height == std::numeric_limits<int>::min())
-    return std::numeric_limits<int>::min(); // Pass error up
+    return std::numeric_limits<int>::min();  // Pass error up
 
   int height_diff = left_height - right_height;
   if (std::abs(height_diff) > 1) {
-    return std::numeric_limits<int>::min(); // Found error -> pass it back
+    return std::numeric_limits<int>::min();  // Found error -> pass it back
   } else {
     return std::max(left_height, right_height) + 1;
   }

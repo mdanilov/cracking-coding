@@ -51,7 +51,6 @@ bool permutation_2(const string &s, const string &t) {
 #include "gtest/gtest.h"
 
 TEST(CheckPermutationTest, Trivial) {
-
   EXPECT_TRUE(permutation_1("abcd", "dcba"));
   EXPECT_FALSE(permutation_1("abcd", "daba"));
 

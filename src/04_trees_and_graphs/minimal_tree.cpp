@@ -11,8 +11,7 @@ using namespace utils;
 
 // Solution
 // ------------------------------------------------------------------------------------------------
-TreeNodePtr createMinimalBST(const std::vector<int> &arr,
-                                           int start, int end) {
+TreeNodePtr createMinimalBST(const std::vector<int> &arr, int start, int end) {
   if (end < start) {
     return nullptr;
   }
@@ -36,8 +35,7 @@ TEST(MinimalTreeTest, Trivial) {
   TreeNodePtr n = createMinimalBST({0, 1, 2, 3, 4, 5, 6});
   std::function<int(TreeNodePtr)> get_max_height;
   get_max_height = [&get_max_height](TreeNodePtr node) {
-    if (node == nullptr)
-      return -1;
+    if (node == nullptr) return -1;
 
     int left_height = get_max_height(node->left);
     int right_height = get_max_height(node->right);

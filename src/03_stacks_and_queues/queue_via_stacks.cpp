@@ -5,8 +5,9 @@
 
 // Solution
 // ------------------------------------------------------------------------------------------------
-template <typename T> class MyQueue {
-public:
+template <typename T>
+class MyQueue {
+ public:
   size_t size() { return stackNewest.size() + stackOldest.size(); }
 
   void add(T value) {
@@ -15,18 +16,18 @@ public:
   }
 
   T peek() {
-    shiftStacks();            // Ensure stackOldest has the current elements
-    return stackOldest.top(); // retrieve the oldest item.
+    shiftStacks();             // Ensure stackOldest has the current elements
+    return stackOldest.top();  // retrieve the oldest item.
   }
 
   T remove() {
-    shiftStacks(); // Ensure stackOldest has the current elements
+    shiftStacks();  // Ensure stackOldest has the current elements
     T value = stackOldest.top();
-    stackOldest.pop(); // pop the oldest item.
+    stackOldest.pop();  // pop the oldest item.
     return value;
   }
 
-private:
+ private:
   void shiftStacks() {
     if (stackOldest.empty()) {
       while (!stackNewest.empty()) {
@@ -47,15 +48,15 @@ private:
 
 TEST(QueueViaStacksTest, Trivial) {
   MyQueue<int> q;
-  q.add(1); // 1 ->
-  q.add(2); // 2 -> 1
-  q.add(3); // 3 -> 2 1
+  q.add(1);  // 1 ->
+  q.add(2);  // 2 -> 1
+  q.add(3);  // 3 -> 2 1
   EXPECT_EQ(1, q.peek());
-  q.add(4); // 4 -> 3 2 1
+  q.add(4);  // 4 -> 3 2 1
   EXPECT_EQ(1, q.peek());
-  q.add(5); // 5 -> 4 3 2 1
+  q.add(5);  // 5 -> 4 3 2 1
   EXPECT_EQ(5, q.size());
-  EXPECT_EQ(1, q.remove()); // 5 4 3 2 -> 1
+  EXPECT_EQ(1, q.remove());  // 5 4 3 2 -> 1
   EXPECT_EQ(4, q.size());
-  EXPECT_EQ(2, q.remove()); // 5 4 3 -> 2
+  EXPECT_EQ(2, q.remove());  // 5 4 3 -> 2
 }

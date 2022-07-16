@@ -11,7 +11,7 @@ class Node;
 using NodePtr = std::shared_ptr<Node>;
 
 class Node {
-public:
+ public:
   enum class State { kUnvisited, kVisited, kVisiting };
 
   Node(int index) : index(index), state(State::kUnvisited) {}
@@ -20,7 +20,7 @@ public:
 
   State state;
 
-private:
+ private:
   int index;
   std::vector<NodePtr> nodes;
 };
@@ -31,7 +31,7 @@ struct Edge {
 };
 
 class Graph {
-public:
+ public:
   Graph(const std::vector<Edge> &edges, int N) {
     nodes.resize(N);
     for (int i = 0; i < N; ++i) {
@@ -47,8 +47,8 @@ public:
 
   std::vector<NodePtr> &getNodes() { return nodes; }
 
-private:
+ private:
   std::vector<NodePtr> nodes;
 };
 
-} // namespace utils
+}  // namespace utils

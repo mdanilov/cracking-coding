@@ -1,6 +1,7 @@
-// Sort Stack: Write a program to sort a stack such that the smallest items are on the top. You can use
-// an additional temporary stack, but you may not copy the elements into any other data structure
-// (such as an array). The stack supports the following operations: push, pop, peek, and isEmpty.
+// Sort Stack: Write a program to sort a stack such that the smallest items are
+// on the top. You can use an additional temporary stack, but you may not copy
+// the elements into any other data structure (such as an array). The stack
+// supports the following operations: push, pop, peek, and isEmpty.
 
 #include <stack>
 
@@ -14,7 +15,7 @@ void sort(std::stack<T>& s) {
     /* Insert each element in s in sorted order into r. */
     T tmp = s.top();
     s.pop();
-    while(!r.empty() && r.top() > tmp) {
+    while (!r.empty() && r.top() > tmp) {
       s.push(r.top());
       r.pop();
     }

@@ -10,12 +10,10 @@ using namespace utils;
 // Solution #1
 // ------------------------------------------------------------------------------------------------
 bool checkBST(TreeNodePtr root, int &last) {
-  if (root == nullptr)
-    return true;
+  if (root == nullptr) return true;
 
   // Check / recurse left
-  if (!checkBST(root->left, last))
-    return false;
+  if (!checkBST(root->left, last)) return false;
 
   if (root->value <= last) {
     return false;
@@ -23,10 +21,9 @@ bool checkBST(TreeNodePtr root, int &last) {
   last = root->value;
 
   // Check / recurse right
-  if (!checkBST(root->right, last))
-    return false;
+  if (!checkBST(root->right, last)) return false;
 
-  return true; // All good!
+  return true;  // All good!
 }
 
 bool checkBST_1(TreeNodePtr root) {
@@ -38,8 +35,7 @@ bool checkBST_1(TreeNodePtr root) {
 // Complexity: time O(N), space O(log N)
 // ------------------------------------------------------------------------------------------------
 bool checkBST(TreeNodePtr root, int min, int max) {
-  if (root == nullptr)
-    return true;
+  if (root == nullptr) return true;
 
   if ((root->value <= min) || (root->value > max)) {
     return false;

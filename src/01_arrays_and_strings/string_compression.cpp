@@ -50,16 +50,16 @@ int countCompression(const string &str) {
 string compress_2(const string &str) {
   /* Check final length and return input string if it would be longer. */
   int finalLength = countCompression(str);
-  if (finalLength > str.length())
-    return str;
+  if (finalLength > str.length()) return str;
 
   string compressed;
-  compressed.reserve(finalLength); // initial capacity
+  compressed.reserve(finalLength);  // initial capacity
   int countConsecutive = 0;
   for (int i = 0; i < str.length(); i++) {
     countConsecutive++;
 
-    /* If next character is different than current, append this char to result. */
+    /* If next character is different than current, append this char to result.
+     */
     if (i + 1 >= str.length() || str[i] != str[i + 1]) {
       compressed.push_back(str[i]);
       compressed.append(to_string(countConsecutive));
@@ -75,7 +75,6 @@ string compress_2(const string &str) {
 #include "gtest/gtest.h"
 
 TEST(StringCompressionTest, Trivial) {
-
   EXPECT_EQ(compress_1("aabcccccaaa"), "a2b1c5a3");
   EXPECT_EQ(compress_2("aabcccccaaa"), "a2b1c5a3");
 }

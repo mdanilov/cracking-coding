@@ -16,12 +16,12 @@ using namespace utils;
 // ------------------------------------------------------------------------------------------------
 void getOrderstring(TreeNodePtr node, std::string &s) {
   if (node == nullptr) {
-    s.append("X"); // Add null indicator
+    s.append("X");  // Add null indicator
     return;
   }
-  s.append(std::to_string(node->value)); // Add root
-  getOrderstring(node->left, s);         // Add left
-  getOrderstring(node->right, s);        // Add right
+  s.append(std::to_string(node->value));  // Add root
+  getOrderstring(node->left, s);          // Add left
+  getOrderstring(node->right, s);         // Add right
 }
 
 bool containsTree_1(TreeNodePtr t1, TreeNodePtr t2) {
@@ -40,11 +40,11 @@ bool containsTree_1(TreeNodePtr t1, TreeNodePtr t2) {
 // ------------------------------------------------------------------------------------------------
 bool matchTree(TreeNodePtr r1, TreeNodePtr r2) {
   if (r1 == nullptr && r2 == nullptr) {
-    return true; // nothing left in the subtree
+    return true;  // nothing left in the subtree
   } else if (r1 == nullptr || r2 == nullptr) {
-    return false; // exactly tree is empty, therefore trees don't match
+    return false;  // exactly tree is empty, therefore trees don't match
   } else if (r1->value != r2->value) {
-    return false; // data doesn't match
+    return false;  // data doesn't match
   } else {
     return matchTree(r1->left, r2->left) && matchTree(r1->right, r2->right);
   }
@@ -52,7 +52,7 @@ bool matchTree(TreeNodePtr r1, TreeNodePtr r2) {
 
 bool subTree(TreeNodePtr r1, TreeNodePtr r2) {
   if (r1 == nullptr) {
-    return false; // big tree empty & subtree still not found
+    return false;  // big tree empty & subtree still not found
   } else if (r1->value == r2->value && matchTree(r1, r2)) {
     return true;
   }
@@ -60,8 +60,7 @@ bool subTree(TreeNodePtr r1, TreeNodePtr r2) {
 }
 
 bool containsTree_2(TreeNodePtr t1, TreeNodePtr t2) {
-  if (t2 == nullptr)
-    return true; // The empty tree is always a subtree
+  if (t2 == nullptr) return true;  // The empty tree is always a subtree
   return subTree(t1, t2);
 }
 

@@ -7,7 +7,7 @@
 // Solution #1
 // ------------------------------------------------------------------------------------------------
 class FixedMulitStack {
-public:
+ public:
   explicit FixedMulitStack(size_t stack_size)
       : values(stack_size * kNumberOfStacks), sizes(kNumberOfStacks) {
     stack_capacity = stack_size;
@@ -32,9 +32,9 @@ public:
     }
 
     size_t top_index = indexOfTop(stack_num);
-    int value = values[top_index]; // Get top
-    values[top_index] = 0;         // Clear
-    sizes[stack_num]--;            // Shrink
+    int value = values[top_index];  // Get top
+    values[top_index] = 0;          // Clear
+    sizes[stack_num]--;             // Shrink
 
     return value;
   }
@@ -53,7 +53,7 @@ public:
   /* Return if stack is full. */
   bool isFull(int stack_num) { return sizes[stack_num] == stack_capacity; }
 
-private:
+ private:
   /* Returns index of the top of the stack. */
   int indexOfTop(int stack_num) {
     int offset = stack_num * stack_capacity;
@@ -70,7 +70,7 @@ private:
 // Solution #2
 // ------------------------------------------------------------------------------------------------
 class MultiStack {
-public:
+ public:
   MultiStack(int number_of_stacks, size_t default_size)
       : values(number_of_stacks * default_size) {
     /* Create metadata for all stacks */
@@ -113,8 +113,8 @@ public:
 
     /* Remove last elemen. */
     int value = values[stack.lastElementIndex()];
-    values[stack.lastElementIndex()] = 0; // Clear item
-    stack.size--;                         // Shrink size
+    values[stack.lastElementIndex()] = 0;  // Clear item
+    stack.size--;                          // Shrink size
     return value;
   }
 
@@ -129,7 +129,7 @@ public:
     if (stack.size >= stack.capacity) {
       int next_stack = (stack_num + 1) % info.size();
       shift(next_stack);
-      stack.capacity++; // claim index that next stack lost
+      stack.capacity++;  // claim index that next stack lost
     }
 
     /* Shift all elements in stack over by one. */
@@ -140,9 +140,9 @@ public:
     }
 
     /* Adjust stack data. */
-    values[stack.start] = 0;              // Clear item
-    stack.start = nextIndex(stack.start); // move start
-    stack.capacity--;                     // Shrink capacity
+    values[stack.start] = 0;               // Clear item
+    stack.start = nextIndex(stack.start);  // move start
+    stack.capacity--;                      // Shrink capacity
   }
 
   /* Expand stack by shifting over other stacks */
@@ -163,7 +163,7 @@ public:
   /* Returns true is all the stacks are full. */
   bool allStacksAreFull() { return numberOfElements() == values.size(); }
 
-private:
+ private:
   struct StackInfo {
     size_t start;
     size_t size = 0;

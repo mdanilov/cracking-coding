@@ -3,10 +3,12 @@
 #include <initializer_list>
 #include <memory>
 
-template <typename T> class ForwardList {
-public:
-  template <typename T1 = T> class Node {
-  public:
+template <typename T>
+class ForwardList {
+ public:
+  template <typename T1 = T>
+  class Node {
+   public:
     std::shared_ptr<Node<T1>> next = nullptr;
     T1 data;
 

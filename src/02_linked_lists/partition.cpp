@@ -16,7 +16,8 @@
 // Solution #1
 // Complexity: time O(1), space O(1)
 // ------------------------------------------------------------------------------------------------
-template <typename T> void partition_1(ForwardList<T> &l, T x) {
+template <typename T>
+void partition_1(ForwardList<T> &l, T x) {
   typename ForwardList<T>::NodePtr beforeStart = nullptr;
   typename ForwardList<T>::NodePtr beforeEnd = nullptr;
   typename ForwardList<T>::NodePtr afterStart = nullptr;
@@ -61,7 +62,8 @@ template <typename T> void partition_1(ForwardList<T> &l, T x) {
 // Solution #2
 // Complexity: time O(1), space O(1)
 // ------------------------------------------------------------------------------------------------
-template <typename T> void partition_2(ForwardList<T> &l, T x) {
+template <typename T>
+void partition_2(ForwardList<T> &l, T x) {
   typename ForwardList<T>::NodePtr node = l.head;
 
   typename ForwardList<T>::NodePtr head = node;

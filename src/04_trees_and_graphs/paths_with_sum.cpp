@@ -16,13 +16,12 @@ using namespace utils;
 // ------------------------------------------------------------------------------------------------
 /* Returns the number of paths with this sum starting from this node */
 int countPathsWithSumFromNode(TreeNodePtr node, int targetSum, int currentSum) {
-  if (node == nullptr)
-    return 0;
+  if (node == nullptr) return 0;
 
   currentSum += node->value;
 
   int totalPaths = 0;
-  if (currentSum == targetSum) { // Found a path from the root
+  if (currentSum == targetSum) {  // Found a path from the root
     totalPaths++;
   }
 
@@ -32,8 +31,7 @@ int countPathsWithSumFromNode(TreeNodePtr node, int targetSum, int currentSum) {
 }
 
 int countPathsWithSum_1(TreeNodePtr root, int targetSum) {
-  if (root == nullptr)
-    return 0;
+  if (root == nullptr) return 0;
 
   /* Count paths with sum starting from the root */
   int pathsFromRoot = countPathsWithSumFromNode(root, targetSum, 0);
@@ -49,10 +47,9 @@ int countPathsWithSum_1(TreeNodePtr root, int targetSum) {
 // Complexity: time O(N) (balanced tree O(log N)), space O(n)
 // ------------------------------------------------------------------------------------------------
 void incrementHashTable(std::map<int, int> &hashTable, int key, int delta) {
-  if (hashTable.find(key) == hashTable.end())
-    hashTable[key] = 0;
+  if (hashTable.find(key) == hashTable.end()) hashTable[key] = 0;
   int newCount = hashTable[key] + delta;
-  if (newCount == 0) { // Remove when zero to reduce space usage
+  if (newCount == 0) {  // Remove when zero to reduce space usage
     hashTable.erase(key);
   } else {
     hashTable[key] = newCount;
@@ -61,14 +58,12 @@ void incrementHashTable(std::map<int, int> &hashTable, int key, int delta) {
 
 int countPathsWithSum(TreeNodePtr node, int targetSum, int runningSum,
                       std::map<int, int> &pathCount) {
-  if (node == nullptr)
-    return 0; // Base case
+  if (node == nullptr) return 0;  // Base case
 
   /* Count paths with sum ending at the current node. */
   runningSum += node->value;
   int sum = runningSum - targetSum;
-  if (pathCount.find(sum) == pathCount.end())
-    pathCount[sum] = 0;
+  if (pathCount.find(sum) == pathCount.end()) pathCount[sum] = 0;
   int totalPaths = pathCount[sum];
 
   /* If runningSum equals targetSum, then one additional path starts at root
@@ -78,10 +73,11 @@ int countPathsWithSum(TreeNodePtr node, int targetSum, int runningSum,
   }
 
   /* Increment pathCount, recurse, then decement pathCount */
-  incrementHashTable(pathCount, runningSum, 1); // Increment pathCount
+  incrementHashTable(pathCount, runningSum, 1);  // Increment pathCount
   totalPaths += countPathsWithSum(node->left, targetSum, runningSum, pathCount);
-  totalPaths += countPathsWithSum(node->right, targetSum, runningSum, pathCount);
-  incrementHashTable(pathCount, runningSum, -1); // Decrement pathCount
+  totalPaths +=
+      countPathsWithSum(node->right, targetSum, runningSum, pathCount);
+  incrementHashTable(pathCount, runningSum, -1);  // Decrement pathCount
 
   return totalPaths;
 }

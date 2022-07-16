@@ -13,9 +13,9 @@
 //
 // Hints: #39, #48, #66, #82
 
+#include <algorithm>
 #include <list>
 #include <vector>
-#include <algorithm>
 
 #include "utils/tree.h"
 
@@ -38,8 +38,8 @@ void weaveLists(std::list<int> first, std::list<int> second,
     return;
   }
 
-  /* Recurse with head of first added to the prefix. Removing the head will damage
-   * first, so we'll need to put it back where we found it afterwards. */
+  /* Recurse with head of first added to the prefix. Removing the head will
+   * damage first, so we'll need to put it back where we found it afterwards. */
   int head_first = first.front();
   first.pop_front();
   prefix.push_back(head_first);
@@ -103,19 +103,13 @@ TEST(BSTSequencesTest, Trivial) {
   root->left->right = std::make_shared<TreeNode>(2);
 
   std::vector<std::list<int>> sequences = {
-    {3, 1, 0, 2, 4},
-    {3, 1, 0, 4, 2},
-    {3, 1, 4, 0, 2},
-    {3, 4, 1, 0, 2},
-    {3, 1, 2, 0, 4},
-    {3, 1, 2, 4, 0},
-    {3, 1, 4, 2, 0},
-    {3, 4, 1, 2, 0}
-  };
+      {3, 1, 0, 2, 4}, {3, 1, 0, 4, 2}, {3, 1, 4, 0, 2}, {3, 4, 1, 0, 2},
+      {3, 1, 2, 0, 4}, {3, 1, 2, 4, 0}, {3, 1, 4, 2, 0}, {3, 4, 1, 2, 0}};
 
   auto results = allSequences(root);
   EXPECT_EQ(8, results.size());
   for (auto seq : results) {
-    EXPECT_TRUE(std::find(sequences.begin(), sequences.end(), seq) != sequences.end());
+    EXPECT_TRUE(std::find(sequences.begin(), sequences.end(), seq) !=
+                sequences.end());
   }
 }

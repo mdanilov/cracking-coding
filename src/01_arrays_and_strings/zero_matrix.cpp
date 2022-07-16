@@ -38,14 +38,12 @@ void setZeros_1(vector<vector<int>> &matrix) {
 
   // Nullify rows
   for (int i = 0; i < row.size(); i++) {
-    if (row[i])
-      nullifyRow(matrix, i);
+    if (row[i]) nullifyRow(matrix, i);
   }
 
   // Nullify columns
   for (int j = 0; j < column.size(); j++) {
-    if (column[j])
-      nullifyColumn(matrix, j);
+    if (column[j]) nullifyColumn(matrix, j);
   }
 }
 
@@ -112,7 +110,6 @@ void setZeros_2(vector<vector<int>> &matrix) {
 #include "gtest/gtest.h"
 
 TEST(RotateMatrixTest, Trivial) {
-
   const vector<vector<int>> init = {
       {0, 1, 2, 3}, {4, 5, 0, 7}, {8, 9, 10, 11}, {12, 13, 14, 15}};
   vector<vector<int>> b = {

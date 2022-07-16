@@ -16,7 +16,7 @@ struct NodeWithMin {
 };
 
 class StackWithMin {
-public:
+ public:
   void push(int value) {
     int newMin = std::min(value, min());
     s.push(NodeWithMin(value, newMin));
@@ -24,7 +24,7 @@ public:
 
   int min() {
     if (s.empty()) {
-      return std::numeric_limits<int>::max(); // Error value
+      return std::numeric_limits<int>::max();  // Error value
     } else {
       return s.top().min;
     }
@@ -36,14 +36,14 @@ public:
     return node.value;
   }
 
-private:
+ private:
   std::stack<NodeWithMin> s;
 };
 
 // Solution #2
 // ------------------------------------------------------------------------------------------------
 class StackWithMin2 {
-public:
+ public:
   void push(int value) {
     if (value <= min()) {
       s2.push(value);
@@ -62,13 +62,13 @@ public:
 
   int min() {
     if (s2.empty()) {
-      return std::numeric_limits<int>::max(); // Error value
+      return std::numeric_limits<int>::max();  // Error value
     } else {
       return s2.top();
     }
   }
 
-private:
+ private:
   std::stack<int> s1;
   std::stack<int> s2;
 };

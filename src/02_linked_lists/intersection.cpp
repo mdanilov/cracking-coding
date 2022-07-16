@@ -6,14 +6,15 @@
 
 // Hints: #20, #45, #55, #65, #76, #93, #111, #120, #129
 
-#include "utils/forward_list.h"
-
 #include <cmath>
+
+#include "utils/forward_list.h"
 
 // Solution #1
 // Complexity: time O(N), space O(1)
 // ------------------------------------------------------------------------------------------------
-template <typename T> struct Result {
+template <typename T>
+struct Result {
   typename ForwardList<T>::NodePtr tail;
   size_t size;
 
@@ -21,10 +22,10 @@ template <typename T> struct Result {
       : tail(tail), size(size) {}
 };
 
-template <typename T> Result<T> getTailAndSize(const ForwardList<T> &l) {
+template <typename T>
+Result<T> getTailAndSize(const ForwardList<T> &l) {
   typename ForwardList<T>::NodePtr node = l.head;
-  if (node == nullptr)
-    return Result<T>(nullptr, 0);
+  if (node == nullptr) return Result<T>(nullptr, 0);
 
   size_t size = 1;
   while (node->next != nullptr) {
@@ -36,8 +37,8 @@ template <typename T> Result<T> getTailAndSize(const ForwardList<T> &l) {
 }
 
 template <typename T>
-typename ForwardList<T>::NodePtr
-getKthNode(typename ForwardList<T>::NodePtr current, size_t k) {
+typename ForwardList<T>::NodePtr getKthNode(
+    typename ForwardList<T>::NodePtr current, size_t k) {
   while (k > 0 && current != nullptr) {
     current = current->next;
     k--;
@@ -48,8 +49,7 @@ getKthNode(typename ForwardList<T>::NodePtr current, size_t k) {
 template <typename T>
 typename ForwardList<T>::NodePtr findIntersection(ForwardList<T> &list1,
                                                   ForwardList<T> &list2) {
-  if (list1.head == nullptr || list2.head == nullptr)
-    return nullptr;
+  if (list1.head == nullptr || list2.head == nullptr) return nullptr;
 
   /* Get tail and sizes */
   Result<T> result1 = getTailAndSize(list1);
@@ -67,7 +67,8 @@ typename ForwardList<T>::NodePtr findIntersection(ForwardList<T> &list1,
       result1.size < result2.size ? list2.head : list1.head;
 
   /* Advance the pointer for the longer linked list by difference in lengths. */
-  longer = getKthNode<T>(longer, std::abs(static_cast<int>(result1.size - result2.size)));
+  longer = getKthNode<T>(
+      longer, std::abs(static_cast<int>(result1.size - result2.size)));
 
   /* Move both pointers until you have a collision. */
   while (shorter != longer) {
@@ -85,7 +86,6 @@ typename ForwardList<T>::NodePtr findIntersection(ForwardList<T> &list1,
 #include "gtest/gtest.h"
 
 TEST(IntersectionTest, Trivial) {
-
   ForwardList<int> list_1({3, 1, 5, 9, 7, 2, 1});
   ForwardList<int> list_2({4, 6, 7, 2, 1});
 

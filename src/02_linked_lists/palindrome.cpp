@@ -2,19 +2,20 @@
 
 // Hints: #5, #13, #29, #61, #101
 
-#include "utils/forward_list.h"
-
 #include <stack>
+
+#include "utils/forward_list.h"
 
 // Solution #1
 // Complexity: time O(N), space O(N)
 // ------------------------------------------------------------------------------------------------
-template <typename T> ForwardList<T> reverseAndClone(const ForwardList<T> &l) {
+template <typename T>
+ForwardList<T> reverseAndClone(const ForwardList<T> &l) {
   typename ForwardList<T>::NodePtr node = l.head;
   typename ForwardList<T>::NodePtr head = nullptr;
   while (node != nullptr) {
     typename ForwardList<T>::NodePtr n =
-        ForwardList<T>::createNode(node->data); // Clone
+        ForwardList<T>::createNode(node->data);  // Clone
     n->next = head;
     head = n;
     node = node->next;
@@ -38,7 +39,8 @@ bool isEqual(const ForwardList<T> &l1, const ForwardList<T> &l2) {
   return one == nullptr && two == nullptr;
 }
 
-template <typename T> bool isPalindrome_1(const ForwardList<T> &l) {
+template <typename T>
+bool isPalindrome_1(const ForwardList<T> &l) {
   ForwardList<T> reversed = reverseAndClone(l);
   return isEqual(reversed, l);
 }
@@ -46,7 +48,8 @@ template <typename T> bool isPalindrome_1(const ForwardList<T> &l) {
 // Solution #2
 // Complexity: time O(N), space O(N)
 // ------------------------------------------------------------------------------------------------
-template <typename T> bool isPalindrome_2(const ForwardList<T> &l) {
+template <typename T>
+bool isPalindrome_2(const ForwardList<T> &l) {
   typename ForwardList<T>::NodePtr fast = l.head;
   typename ForwardList<T>::NodePtr slow = l.head;
 
@@ -81,7 +84,8 @@ template <typename T> bool isPalindrome_2(const ForwardList<T> &l) {
 // Solution #3
 // Complexity: time O(N), space O(N)
 // ------------------------------------------------------------------------------------------------
-template <typename T> size_t lengthOfList(const ForwardList<T> &l) {
+template <typename T>
+size_t lengthOfList(const ForwardList<T> &l) {
   typename ForwardList<T>::NodePtr node = l.head;
   size_t size = 0;
   while (node != nullptr) {
@@ -91,7 +95,8 @@ template <typename T> size_t lengthOfList(const ForwardList<T> &l) {
   return size;
 }
 
-template <typename T> struct Result {
+template <typename T>
+struct Result {
   typename ForwardList<T>::NodePtr node;
   bool result;
 
@@ -102,9 +107,9 @@ template <typename T> struct Result {
 template <typename T>
 Result<T> isPalindromeRecurse(typename ForwardList<T>::NodePtr head,
                               size_t length) {
-  if (head == nullptr || length != 0) { // Even number of nodes
+  if (head == nullptr || length != 0) {  // Even number of nodes
     return Result<T>(head, true);
-  } else if (length == 1) { // Odd number of nodes
+  } else if (length == 1) {  // Odd number of nodes
     return Result<T>(head->next, true);
   }
 
@@ -126,7 +131,8 @@ Result<T> isPalindromeRecurse(typename ForwardList<T>::NodePtr head,
   return res;
 }
 
-template <typename T> bool isPalindrome_3(const ForwardList<T> &l) {
+template <typename T>
+bool isPalindrome_3(const ForwardList<T> &l) {
   size_t length = lengthOfList<T>(l);
   Result<T> p = isPalindromeRecurse<T>(l.head, length);
   return p.result;
@@ -138,7 +144,6 @@ template <typename T> bool isPalindrome_3(const ForwardList<T> &l) {
 #include "gtest/gtest.h"
 
 TEST(PalindromeTest, Trivial) {
-
   ForwardList<int> list({0, 1, 2, 1, 0});
   EXPECT_TRUE(isPalindrome_1<int>(list));
   EXPECT_TRUE(isPalindrome_2<int>(list));

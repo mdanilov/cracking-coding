@@ -17,7 +17,7 @@
 enum class AnimalType { kUnknown, kDog, kCat };
 
 class Animal {
-public:
+ public:
   explicit Animal(const std::string &n) : name(n), type(AnimalType::kUnknown) {}
   virtual ~Animal() {}
 
@@ -31,26 +31,26 @@ public:
   /* Compare orders of animals to return the older item. */
   bool isOlderThan(Animal a) { return order < a.getOrder(); }
 
-protected:
+ protected:
   std::string name;
   AnimalType type;
 
-private:
+ private:
   int order;
 };
 
 class Dog : public Animal {
-public:
+ public:
   Dog(const std::string &n) : Animal(n) { type = AnimalType::kDog; }
 };
 
 class Cat : public Animal {
-public:
+ public:
   Cat(const std::string &n) : Animal(n) { type = AnimalType::kCat; }
 };
 
 class AnimalQueue {
-public:
+ public:
   void enqueue(std::shared_ptr<Animal> a) {
     /* Order is used as a sort of timestamp, so that we can compare the
      * insertion order of a dog to a cat. */
@@ -93,10 +93,10 @@ public:
     }
   }
 
-private:
+ private:
   std::list<std::shared_ptr<Dog>> dogs;
   std::list<std::shared_ptr<Cat>> cats;
-  int order = 0; // acts as timestamp
+  int order = 0;  // acts as timestamp
 };
 
 // Test

@@ -10,8 +10,7 @@ using namespace std;
 // ------------------------------------------------------------------------------------------------
 
 bool isUniqueChars_1(const string& str) {
-  if (str.length() > 128)
-    return false;
+  if (str.length() > 128) return false;
 
   bool char_set[128] = {0};
   for (int i = 0; i < str.length(); ++i) {
@@ -43,7 +42,6 @@ bool isUniqueChars_2(const string& str) {
 #include "gtest/gtest.h"
 
 TEST(IsUniqueTest, Trivial) {
-
   EXPECT_TRUE(isUniqueChars_1("abcd"));
   EXPECT_FALSE(isUniqueChars_1("abcc"));
 

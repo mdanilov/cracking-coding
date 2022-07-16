@@ -27,7 +27,7 @@ std::vector<int> getAlternatingSequences(int n) {
   for (int i = 0; i < sizeof(int) * 8; ++i) {
     if ((n & 1) != searchingFor) {
       sequences.push_back(counter);
-      searchingFor = n & 1; // Flip 1 to 0 or 0 to 1
+      searchingFor = n & 1;  // Flip 1 to 0 or 0 to 1
       counter = 0;
     }
     counter++;
@@ -49,12 +49,12 @@ int findLongestSequence(const std::vector<int> &seq) {
     int onesSeqLeft = i + 1 < seq.size() ? seq[i + 1] : 0;
 
     int thisSeq = 0;
-    if (zerosSeq == 1) { // can merge
+    if (zerosSeq == 1) {  // can merge
       thisSeq = onesSeqLeft + 1 + onesSeqRight;
     }
-    if (zerosSeq > 1) { // Just add a zero to either side
+    if (zerosSeq > 1) {  // Just add a zero to either side
       thisSeq = 1 + std::max(onesSeqLeft, onesSeqRight);
-    } else if (zerosSeq == 0) { // No zero, but take either side
+    } else if (zerosSeq == 0) {  // No zero, but take either side
       thisSeq = std::max(onesSeqLeft, onesSeqRight);
     }
     maxSeq = std::max(thisSeq, maxSeq);
@@ -64,8 +64,7 @@ int findLongestSequence(const std::vector<int> &seq) {
 }
 
 int longestSequence(int n) {
-  if (n == -1)
-    return sizeof(int) * 8;
+  if (n == -1) return sizeof(int) * 8;
   std::vector<int> sequences = getAlternatingSequences(n);
   return findLongestSequence(sequences);
 }
@@ -75,16 +74,15 @@ int longestSequence(int n) {
 // ------------------------------------------------------------------------------------------------
 int flipBit(int a) {
   /* If all 1S, this is already the longest sequence. */
-  if (~a == 0)
-    return sizeof(int) * 8;
+  if (~a == 0) return sizeof(int) * 8;
 
   int currentLength = 0;
   int previousLength = 0;
-  int maxLength = 1; // We can always have a sequence of at least one 1
+  int maxLength = 1;  // We can always have a sequence of at least one 1
   while (a != 0) {
-    if ((a & 1) == 1) { // Current bit is a 1
+    if ((a & 1) == 1) {  // Current bit is a 1
       currentLength++;
-    } else if ((a & 1) == 0) { // Current bit is a 0
+    } else if ((a & 1) == 0) {  // Current bit is a 0
       /* Update to 0 (if next bit is 0) or currentLength (if next bit is 1). */
       previousLength = (a & 2) == 0 ? 0 : currentLength;
       currentLength = 0;
@@ -101,7 +99,7 @@ int flipBit(int a) {
 #include "gtest/gtest.h"
 
 TEST(FlipBitToWinTest, Trivial) {
-  int n = 1775; // 0b11011101111
+  int n = 1775;  // 0b11011101111
   EXPECT_EQ(longestSequence(n), 8);
   EXPECT_EQ(flipBit(n), 8);
 }

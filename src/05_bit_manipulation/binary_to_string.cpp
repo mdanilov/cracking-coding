@@ -65,7 +65,7 @@ std::string printBinary_2(double num) {
 #include "gtest/gtest.h"
 
 TEST(BinaryToStringTest, Trivial) {
-  double n{0.625f}; // 0b101
+  double n{0.625f};  // 0b101
   EXPECT_EQ(printBinary_1(n), ".101");
   EXPECT_EQ(printBinary_2(n), ".101");
 }

@@ -14,9 +14,10 @@
 // Solution #1
 // Complexity: time O(1), space O(1)
 // ------------------------------------------------------------------------------------------------
-template <typename T> bool deleteNode(typename ForwardList<T>::NodePtr n) {
+template <typename T>
+bool deleteNode(typename ForwardList<T>::NodePtr n) {
   if (n == nullptr || n->next == nullptr) {
-    return false; // Failure
+    return false;  // Failure
   }
   typename ForwardList<T>::NodePtr next = n->next;
   n->data = next->data;

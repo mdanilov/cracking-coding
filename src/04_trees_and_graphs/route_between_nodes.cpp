@@ -1,16 +1,16 @@
 // Route Between Nodes: Given a directed graph, design an algorithm to find out
 // whether there is a route between two nodes. Hints: #127
 
-#include "utils/graph.h"
 #include <list>
+
+#include "utils/graph.h"
 
 using namespace utils;
 
 // Solution
 // ------------------------------------------------------------------------------------------------
 bool search(Graph &g, NodePtr start, NodePtr end) {
-  if (start == end)
-    return true;
+  if (start == end) return true;
   // operates as queue
   std::list<NodePtr> q;
   for (NodePtr u : g.getNodes()) {
@@ -21,7 +21,7 @@ bool search(Graph &g, NodePtr start, NodePtr end) {
   NodePtr u;
   while (!q.empty()) {
     u = q.front();
-    q.pop_front(); // i.e. dequeue
+    q.pop_front();  // i.e. dequeue
     if (u != nullptr) {
       for (NodePtr v : u->getAdjacent()) {
         if (v->state == Node::State::kUnvisited) {

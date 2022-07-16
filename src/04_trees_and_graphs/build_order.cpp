@@ -22,7 +22,7 @@
 // Complexity time O(P + D)
 // ------------------------------------------------------------------------------------------------
 class Project {
-public:
+ public:
   enum class State { kBlank, kPartial, kComplete };
 
   Project(const std::string &n) : name(n) {}
@@ -47,7 +47,7 @@ public:
     return children;
   }
 
-private:
+ private:
   std::string name;
   State state = State::kBlank;
   int dependencies = 0;
@@ -56,7 +56,7 @@ private:
 };
 
 class Graph {
-public:
+ public:
   std::shared_ptr<Project> getOrCreateNode(const std::string &name) {
     if (map.find(name) == map.end()) {
       auto node = std::make_shared<Project>(name);
@@ -76,7 +76,7 @@ public:
     return nodes;
   }
 
-private:
+ private:
   std::vector<std::shared_ptr<Project>> nodes;
   std::unordered_map<std::string, std::shared_ptr<Project>> map;
 };
@@ -114,8 +114,8 @@ int addNonDependent(std::vector<std::shared_ptr<Project>> &order,
 }
 
 /* Return a list of the projects a correct build order. */
-std::vector<std::shared_ptr<Project>>
-orderProjects_1(const std::vector<std::shared_ptr<Project>> &projects) {
+std::vector<std::shared_ptr<Project>> orderProjects_1(
+    const std::vector<std::shared_ptr<Project>> &projects) {
   std::vector<std::shared_ptr<Project>> order(projects.size());
 
   /* Add "roots" to the build order first. */
@@ -146,9 +146,9 @@ orderProjects_1(const std::vector<std::shared_ptr<Project>> &projects) {
 }
 
 /* Find a correct build order. */
-std::vector<std::shared_ptr<Project>>
-findBuildOrder_1(const std::vector<std::string> &projects,
-                 const std::vector<Dependency> &dependencies) {
+std::vector<std::shared_ptr<Project>> findBuildOrder_1(
+    const std::vector<std::string> &projects,
+    const std::vector<Dependency> &dependencies) {
   Graph graph = buildGraph(projects, dependencies);
   return orderProjects_1(graph.getNodes());
 }
@@ -159,7 +159,7 @@ findBuildOrder_1(const std::vector<std::string> &projects,
 bool doDFS(std::shared_ptr<Project> project,
            std::stack<std::shared_ptr<Project>> &stack) {
   if (project->getState() == Project::State::kPartial) {
-    return false; // Cycle
+    return false;  // Cycle
   }
 
   if (project->getState() == Project::State::kBlank) {
@@ -177,8 +177,8 @@ bool doDFS(std::shared_ptr<Project> project,
   return true;
 }
 
-std::stack<std::shared_ptr<Project>>
-orderProjects_2(const std::vector<std::shared_ptr<Project>> &projects) {
+std::stack<std::shared_ptr<Project>> orderProjects_2(
+    const std::vector<std::shared_ptr<Project>> &projects) {
   std::stack<std::shared_ptr<Project>> stack;
   for (auto project : projects) {
     if (project->getState() == Project::State::kBlank) {
@@ -191,9 +191,9 @@ orderProjects_2(const std::vector<std::shared_ptr<Project>> &projects) {
   return stack;
 }
 
-std::stack<std::shared_ptr<Project>>
-findBuildOrder_2(const std::vector<std::string> &projects,
-                 const std::vector<Dependency> &dependencies) {
+std::stack<std::shared_ptr<Project>> findBuildOrder_2(
+    const std::vector<std::string> &projects,
+    const std::vector<Dependency> &dependencies) {
   Graph graph = buildGraph(projects, dependencies);
   return orderProjects_2(graph.getNodes());
 }
@@ -223,8 +223,8 @@ TEST(BuildOrderTest, Trivial) {
   }
 
   {
-    std::vector<std::string> expected_order = {"d", "g", "f", "b", "h", "c",
-                                               "a", "e"};
+    std::vector<std::string> expected_order = {"d", "g", "f", "b",
+                                               "h", "c", "a", "e"};
     auto order = findBuildOrder_2({"f", "c", "b", "a", "h", "e", "d", "g"},
                                   {{"f", "c"},
                                    {"f", "b"},
