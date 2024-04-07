@@ -1,6 +1,7 @@
 // Queue via Stacks: Implement a MyQueue class which implements a queue using
 // two stacks.
 
+#include <cstddef>
 #include <stack>
 
 // Solution
