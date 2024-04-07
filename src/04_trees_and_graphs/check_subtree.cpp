@@ -1,5 +1,5 @@
 // Check Subtree: T1 and T2 are two very large binary trees, with Tl much bigger
-// than T2. Create an algorith m to determine if T2 is a subtree of Tl . A tree
+// than T2. Create an algorithm m to determine if T2 is a subtree of Tl . A tree
 // T2 is a subtree ofTi if there exists a node n in Ti such that the subtree of
 // n is identical to T2. That is, if you cut off the tree at node n, the two
 // trees would be identical. Hints: #4, #11, #18, #31, #37
@@ -14,22 +14,22 @@ using namespace utils;
 // Complexity: time O(n + m), space O(n + m), where n and m are the number of
 // nodes in T1 and T2, respectively.
 // ------------------------------------------------------------------------------------------------
-void getOrderstring(TreeNodePtr node, std::string &s) {
+void getOrderString(TreeNodePtr node, std::string &s) {
   if (node == nullptr) {
     s.append("X");  // Add null indicator
     return;
   }
   s.append(std::to_string(node->value));  // Add root
-  getOrderstring(node->left, s);          // Add left
-  getOrderstring(node->right, s);         // Add right
+  getOrderString(node->left, s);          // Add left
+  getOrderString(node->right, s);         // Add right
 }
 
 bool containsTree_1(TreeNodePtr t1, TreeNodePtr t2) {
   std::string string1;
   std::string string2;
 
-  getOrderstring(t1, string1);
-  getOrderstring(t2, string2);
+  getOrderString(t1, string1);
+  getOrderString(t2, string2);
 
   return string1.find(string2) != std::string::npos;
 }

@@ -15,6 +15,6 @@ int swapOddEvenBits(int x) {
 
 #include "gtest/gtest.h"
 
-TEST(PairwaiseSwapTest, Trivial) {
+TEST(PairwiseSwapTest, Trivial) {
   EXPECT_EQ(swapOddEvenBits(0b01111010001101), 0b10110101001110);
 }

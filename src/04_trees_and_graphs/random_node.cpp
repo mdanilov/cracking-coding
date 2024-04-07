@@ -67,7 +67,7 @@ class TreeNode : public std::enable_shared_from_this<TreeNode> {
     } else if (i == leftSize) {
       return shared_from_this();
     } else {
-      /* Skipping over leftSize + 1 nodes, to substract them */
+      /* Skipping over leftSize + 1 nodes, to subtract them */
       return right->getIthNode(i - (leftSize + 1));
     }
   }

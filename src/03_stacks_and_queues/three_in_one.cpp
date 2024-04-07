@@ -6,9 +6,9 @@
 
 // Solution #1
 // ------------------------------------------------------------------------------------------------
-class FixedMulitStack {
+class FixedMultiStack {
  public:
-  explicit FixedMulitStack(size_t stack_size)
+  explicit FixedMultiStack(size_t stack_size)
       : values(stack_size * kNumberOfStacks), sizes(kNumberOfStacks) {
     stack_capacity = stack_size;
   }
@@ -111,7 +111,7 @@ class MultiStack {
       throw std::runtime_error("Stack is empty");
     }
 
-    /* Remove last elemen. */
+    /* Remove last element. */
     int value = values[stack.lastElementIndex()];
     values[stack.lastElementIndex()] = 0;  // Clear item
     stack.size--;                          // Shrink size
@@ -228,7 +228,7 @@ class MultiStack {
 
 TEST(FreeInOneTest, Trivial) {
   {
-    FixedMulitStack stack(3);
+    FixedMultiStack stack(3);
 
     for (int i = 0; i < 3; ++i) {
       for (int j = 0; j < 3; ++j) {

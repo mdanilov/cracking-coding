@@ -18,7 +18,7 @@ TreeNodePtr leftMostChild(TreeNodePtr n) {
   return n;
 }
 
-TreeNodePtr inorderSucc(TreeNodePtr n) {
+TreeNodePtr inOrderSucc(TreeNodePtr n) {
   if (n == nullptr) {
     return nullptr;
   }
@@ -59,7 +59,7 @@ TEST(SuccessorTest, Trivial) {
   root->left->right = std::make_shared<TreeNode>(2);
   root->left->right->parent = root->left;
 
-  EXPECT_EQ(root->left->right->value, inorderSucc(root->left)->value);
-  EXPECT_EQ(root->value, inorderSucc(root->left->right)->value);
-  EXPECT_EQ(nullptr, inorderSucc(root->right));  // no successor for node 4
+  EXPECT_EQ(root->left->right->value, inOrderSucc(root->left)->value);
+  EXPECT_EQ(root->value, inOrderSucc(root->left->right)->value);
+  EXPECT_EQ(nullptr, inOrderSucc(root->right));  // no successor for node 4
 }

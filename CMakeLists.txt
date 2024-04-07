@@ -5,6 +5,7 @@ list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 set(CMAKE_CXX_STANDARD 11)
 
 enable_testing()
+include(CTest)
 include(GoogleTest)
 include(PackageAddTest)
 
