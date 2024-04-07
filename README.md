@@ -1,6 +1,6 @@
 # Cracking the Coding Interview C++
 
-![CI](https://github.com/mdanilov/cracking-coding/workflows/CI/badge.svg?branch=master)
+![CI](https://github.com/mdanilov/cracking-coding/workflows/main.yml/badge.svg?branch=master)
 
 Solutions for [Cracking the Coding Interview 6th Edition](http://www.amazon.com/Cracking-Coding-Interview-6th-Edition/dp/0984782850) by [Gayle Laakmann McDowell](http://www.gayle.com/) in C++ programming language.
 
