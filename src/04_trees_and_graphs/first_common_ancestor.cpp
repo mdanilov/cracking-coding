@@ -3,6 +3,8 @@
 // in a data structure. NOTE: This is not necessarily a binary search tree.
 // Hints: # 10, #16, #28, #36, #46, #70, #80, #96
 
+#include <cmath>
+
 #include "utils/tree.h"
 
 using namespace utils;

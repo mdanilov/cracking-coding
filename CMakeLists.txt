@@ -3,7 +3,8 @@ cmake_minimum_required(VERSION 3.13)
 project(CrackingCoding)
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
 
 enable_testing()
 
